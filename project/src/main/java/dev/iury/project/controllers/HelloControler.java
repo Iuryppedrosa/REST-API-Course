@@ -1,5 +1,6 @@
-package dev.iury.project;
+package dev.iury.project.controllers;
 
+import dev.iury.project.Hello;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
