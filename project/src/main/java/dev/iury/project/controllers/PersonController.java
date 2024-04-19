@@ -3,6 +3,7 @@ package dev.iury.project.controllers;
 import dev.iury.project.model.Person;
 import dev.iury.project.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,7 +37,8 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id){
+    public ResponseEntity<?> delete(@PathVariable Long id){
         personService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
