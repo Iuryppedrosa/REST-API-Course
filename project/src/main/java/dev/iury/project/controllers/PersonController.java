@@ -1,6 +1,7 @@
 package dev.iury.project.controllers;
 
-import dev.iury.project.model.Person;
+import dev.iury.project.dataVO.PersonVO;
+//import dev.iury.project.dataVO.PersonVO2;
 import dev.iury.project.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,24 +18,29 @@ public class PersonController {
     PersonService personService;
 
     @GetMapping("/{id}")
-    public Optional<Person> findById(@PathVariable Long id){
+    public Optional<PersonVO> findById(@PathVariable Long id){
         return personService.findById(id);
     }
 
     @GetMapping
-    public List<Person> findAll(){
+    public List<PersonVO> findAll(){
         return personService.findAll();
     }
 
     @PutMapping("/{id}")
-    public Person update(@RequestBody Person person, @PathVariable Long id){
-        return personService.newPerson(person, id);
+    public PersonVO update(@RequestBody PersonVO person, @PathVariable Long id){
+        return personService.newPersonVO(person, id);
     }
 
     @PostMapping
-    public Person create(@RequestBody Person person){
+    public PersonVO create(@RequestBody PersonVO person){
         return personService.create(person);
     }
+//
+//    @PostMapping("/v2")
+//    public PersonVO2 createV2(@RequestBody PersonVO2 person){
+//        return personService.createV2(person);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
