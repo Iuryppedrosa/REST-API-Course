@@ -1,50 +1,53 @@
 package dev.iury.project.controllers;
 
-import dev.iury.project.dataVO.PersonVO;
-//import dev.iury.project.dataVO.PersonVO2;
-import dev.iury.project.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
+import dev.iury.project.dataVO.PersonVO;
+import dev.iury.project.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
 @RestController
-@RequestMapping("/person")
+@RequestMapping("/api/person/v1")
 public class PersonController {
 
     @Autowired
-    PersonService personService;
-
-    @GetMapping("/{id}")
-    public Optional<PersonVO> findById(@PathVariable Long id){
-        return personService.findById(id);
-    }
+    private PersonService service;
 
     @GetMapping
-    public List<PersonVO> findAll(){
-        return personService.findAll();
+    public List<PersonVO> findAll() {
+        return service.findAll();
+    }
+
+    @GetMapping(value = "/{id}")
+    public Optional<PersonVO> findById(@PathVariable(value = "id") Long id) {
+        return Optional.ofNullable(service.findById(id));
+    }
+
+    @PostMapping()
+    public PersonVO create(@RequestBody PersonVO person) {
+        return service.create(person);
     }
 
     @PutMapping("/{id}")
     public PersonVO update(@RequestBody PersonVO person, @PathVariable Long id){
-        return personService.newPersonVO(person, id);
+        return service.update(person, id);
     }
 
-    @PostMapping
-    public PersonVO create(@RequestBody PersonVO person){
-        return personService.create(person);
-    }
-//
-//    @PostMapping("/v2")
-//    public PersonVO2 createV2(@RequestBody PersonVO2 person){
-//        return personService.createV2(person);
-//    }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id){
-        personService.delete(id);
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
+        service.delete(id);
         return ResponseEntity.noContent().build();
     }
 }
