@@ -1,7 +1,5 @@
 package dev.iury.project.Exceptions;
-
 import java.io.Serializable;
-import java.time.Instant;
 import java.util.Date;
 
 public class ExceptionResponse implements Serializable {

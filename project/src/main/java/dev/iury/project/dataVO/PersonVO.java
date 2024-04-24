@@ -1,21 +1,18 @@
 package dev.iury.project.dataVO;
-
-import jakarta.persistence.*;
-
 import java.io.Serializable;
-import java.util.Objects;
 
 public class PersonVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     private Long id;
     private String firstName;
     private String lastName;
     private String address;
     private String gender;
 
-    public PersonVO() {}
+    public PersonVO() {
+
+    }
 
     public Long getId() {
         return id;

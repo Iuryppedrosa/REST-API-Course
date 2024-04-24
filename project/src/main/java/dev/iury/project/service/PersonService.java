@@ -1,7 +1,9 @@
 package dev.iury.project.service;
 import dev.iury.project.Exceptions.ResourceNotFoundException;
 import dev.iury.project.dataVO.PersonVO;
+import dev.iury.project.dataVO2.PersonVOV2;
 import dev.iury.project.mapper.DozerMapper;
+import dev.iury.project.mapper.custom.PersonMapper;
 import dev.iury.project.model.Person;
 import dev.iury.project.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ public class PersonService {
 
     @Autowired
     PersonRepository personRepository;
+
+    @Autowired
+    PersonMapper personMapper;
 
     public List<PersonVO> findAll(){
         List<PersonVO> listAqui = DozerMapper.parseListObjects(personRepository.findAll(), PersonVO.class);
@@ -33,6 +38,12 @@ public class PersonService {
     public PersonVO create(PersonVO person){
         var entity = DozerMapper.parseObject(person, Person.class);
         var vo = DozerMapper.parseObject(personRepository.save(entity), PersonVO.class);
+        return vo;
+    }
+
+    public PersonVOV2 createv2(PersonVOV2 person){
+        var entity = personMapper.convertVov2ToEntity(person);
+        var vo = personMapper.convertEntityToVoV2(personRepository.save(entity));
         return vo;
     }
 

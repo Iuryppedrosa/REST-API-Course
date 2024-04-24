@@ -1,7 +1,5 @@
 package dev.iury.project.model;
-
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.Objects;
 
