@@ -5,21 +5,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.io.Serializable;
 
-@JsonPropertyOrder({"id", "first_Name", "last_Name","address", "gender"})
+@JsonPropertyOrder({"id", "firstName", "lastName","address", "gender"})
 public class PersonVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Long id;
 
-    @JsonProperty("first_Name")
+    //@JsonProperty("first_Name")
     private String firstName;
 
-    @JsonProperty("last_Name")
+    //@JsonProperty("last_Name")
     private String lastName;
 
     private String address;
 
-    @JsonIgnore
+    //@JsonIgnore
     private String gender;
 
     public PersonVO() {
