@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import static dev.iury.project.util.MediaType.APPLICATION_YML;
 
 @RestController
@@ -36,8 +35,8 @@ public class PersonController {
             produces = {MediaType.APPLICATION_JSON,
                         MediaType.APPLICATION_XML,
                         MediaType.APPLICATION_YML})
-    public Optional<PersonVO> findById(@PathVariable(value = "id") Long id) {
-        return Optional.ofNullable(service.findById(id));
+    public PersonVO findById(@PathVariable(value = "id") Long id) {
+        return service.findById(id);
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON,
