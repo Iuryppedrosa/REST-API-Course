@@ -1,5 +1,6 @@
 package dev.iury.project.service;
 import dev.iury.project.Exceptions.ResourceNotFoundException;
+import dev.iury.project.Exceptions.RiqueredObjectsNullException;
 import dev.iury.project.controllers.PersonController;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.dataVO2.PersonVOV2;
@@ -42,6 +43,7 @@ public class PersonService {
     }
 
     public PersonVO create(PersonVO person){
+        if(person == null) throw new RiqueredObjectsNullException();
         var entity = DozerMapper.parseObject(person, Person.class);
         var vo = DozerMapper.parseObject(personRepository.save(entity), PersonVO.class);
         vo.add(linkTo(methodOn(PersonController.class).findById(vo.getKey())).withSelfRel());
@@ -55,6 +57,7 @@ public class PersonService {
     }
 
     public PersonVO update(PersonVO person, Long key) {
+        if(person == null) throw new RiqueredObjectsNullException();
         var entity = personRepository.findById(key).orElseThrow(
                 () -> new ResourceNotFoundException("No records found for this id"));
 
