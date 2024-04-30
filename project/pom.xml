@@ -22,11 +22,23 @@
 		<java.version>17</java.version>
 		<dozer.version>6.4.0</dozer.version>
 		<model-mapper.version>3.1.1</model-mapper.version>
+		<springdoc.version>2.0.2</springdoc.version>
 	</properties>
 
 
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -99,6 +111,7 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
