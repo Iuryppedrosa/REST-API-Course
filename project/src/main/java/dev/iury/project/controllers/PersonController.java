@@ -1,6 +1,5 @@
 package dev.iury.project.controllers;
 import java.util.List;
-import java.util.Optional;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.dataVO2.PersonVOV2;
 import dev.iury.project.service.PersonService;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import static dev.iury.project.util.MediaType.APPLICATION_YML;
 
 @RestController
 @RequestMapping("api/person/v1")
