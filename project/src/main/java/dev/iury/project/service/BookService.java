@@ -30,6 +30,7 @@ public class BookService {
     public List<BookVO> findAll(){
         List<BookVO> listAqui = DozerMapper.parseListObjects(bookRepository.findAll(), BookVO.class);
         for(BookVO book : listAqui){
+            book.setKey(book.getKey());
             book.add(linkTo(methodOn(BookController.class).findById(book.getKey())).withSelfRel());
         }
         return listAqui;
@@ -46,7 +47,9 @@ public class BookService {
     public BookVO create(BookVO book){
         if(book == null) throw new RiqueredObjectsNullException();
         var entity = DozerMapper.parseObject(book, Book.class);
-        var vo = DozerMapper.parseObject(bookRepository.save(entity), BookVO.class);
+        var savedEntity = bookRepository.save(entity);
+        var vo = DozerMapper.parseObject(savedEntity, BookVO.class);
+        vo.setKey(savedEntity.getId());
         vo.add(linkTo(methodOn(BookController.class).findById(vo.getKey())).withSelfRel());
         return vo;
     }
@@ -69,6 +72,7 @@ public class BookService {
 
         var savedEntity = bookRepository.save(entity);
         var vo = DozerMapper.parseObject(savedEntity, BookVO.class);
+        vo.setKey(savedEntity.getId());
         vo.add(linkTo(methodOn(BookController.class).findById(key)).withSelfRel());
         return vo;
     }

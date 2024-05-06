@@ -96,7 +96,7 @@ public class Book implements Serializable {
         return "Book{" +
                 "id=" + id +
                 ", author='" + author + '\'' +
-                ", lauchDate=" + launchDate +
+                ", launchDate=" + launchDate +
                 ", price=" + price +
                 ", title='" + title + '\'' +
                 '}';

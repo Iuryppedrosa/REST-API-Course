@@ -22,7 +22,6 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
 
     private Double price;
 
-
     private String title;
 
     public BookVO(Long id, String author, Date launchDate, Double price, String title) {
@@ -89,14 +88,4 @@ public class BookVO extends RepresentationModel<BookVO> implements Serializable 
         return Objects.hash(key, author, launchDate, price, title);
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + key +
-                ", author='" + author + '\'' +
-                ", lauchDate=" + launchDate +
-                ", price=" + price +
-                ", title='" + title + '\'' +
-                '}';
-    }
 }
