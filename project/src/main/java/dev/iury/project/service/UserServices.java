@@ -38,11 +38,10 @@ public class UserServices implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.info("Searching for user by username: " + username);
         var user = userRepository.findByUserName(username);
-        if (user == null) {
-            logger.warning("User not found: " + username);
-            throw new UsernameNotFoundException("User not found");
+        if (user != null) {
+            return user;
+        } else{
+            throw new UsernameNotFoundException("Username " + username + " not found");
         }
-        logger.info("User found: " + username);
-        return user;
     }
 }
