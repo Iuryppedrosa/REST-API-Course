@@ -3,7 +3,7 @@ import dev.iury.project.Exceptions.RiqueredObjectsNullException;
 import dev.iury.project.dataVO.BookVO;
 import dev.iury.project.model.Book;
 import dev.iury.project.repository.BookRepository;
-import dev.iury.project.service.BookService;
+import dev.iury.project.service.BookServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -29,7 +29,7 @@ class BookServiceTest {
     MockBook input;
 
     @InjectMocks
-    private BookService service;
+    private BookServices service;
 
     @Mock
     BookRepository repository;

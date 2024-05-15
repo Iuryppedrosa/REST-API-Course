@@ -1,7 +1,7 @@
 package dev.iury.project.controllers;
 
 import dev.iury.project.dataVO.BookVO;
-import dev.iury.project.service.BookService;
+import dev.iury.project.service.BookServices;
 import dev.iury.project.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -22,7 +22,7 @@ public class BookController {
 
 
     @Autowired
-    private BookService service;
+    private BookServices service;
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON,
             MediaType.APPLICATION_XML,

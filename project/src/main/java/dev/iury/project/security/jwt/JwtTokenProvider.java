@@ -43,7 +43,7 @@ public class JwtTokenProvider {
     public TokenVO createAccessToken(String username, List<String> roles){
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliSeconds);
-        var accessToken = getAceessToken(username, roles, now, validity);
+        var accessToken = getAccessToken(username, roles, now, validity);
 
         var refreshTOken = getRefreshToken(username, roles, now);
 
@@ -51,7 +51,7 @@ public class JwtTokenProvider {
     }
 
 
-    private String getAceessToken(String username, List<String> roles, Date now, Date validity) {
+    private String getAccessToken(String username, List<String> roles, Date now, Date validity) {
        String issueUrl = ServletUriComponentsBuilder
                .fromCurrentContextPath()
                .build()
@@ -98,6 +98,7 @@ public class JwtTokenProvider {
     public String resolveToken(HttpServletRequest req) {
         String bearerToken = req.getHeader("Authorization");
 
+        // Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsZWFuZHJvIiwicm9sZXMiOlsiQURNSU4iLCJNQU5BR0VSIl0sImlzcyI
         if(bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring("Bearer ".length());
         }

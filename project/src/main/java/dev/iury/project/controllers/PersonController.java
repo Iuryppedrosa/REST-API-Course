@@ -2,7 +2,7 @@ package dev.iury.project.controllers;
 import java.util.List;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.dataVO2.PersonVOV2;
-import dev.iury.project.service.PersonService;
+import dev.iury.project.service.PersonServices;
 import dev.iury.project.util.MediaType;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 public class PersonController {
 
     @Autowired
-    private PersonService service;
+    private PersonServices service;
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON,
                             MediaType.APPLICATION_XML,

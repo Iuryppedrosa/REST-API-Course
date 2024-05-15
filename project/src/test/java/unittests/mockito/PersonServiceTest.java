@@ -1,10 +1,9 @@
 package unittests.mockito;
 import dev.iury.project.Exceptions.RiqueredObjectsNullException;
-import dev.iury.project.controllers.PersonController;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.model.Person;
 import dev.iury.project.repository.PersonRepository;
-import dev.iury.project.service.PersonService;
+import dev.iury.project.service.PersonServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -29,7 +28,7 @@ class PersonServiceTest {
     MockPerson input;
 
     @InjectMocks
-    private PersonService service;
+    private PersonServices service;
 
     @Mock
     PersonRepository repository;

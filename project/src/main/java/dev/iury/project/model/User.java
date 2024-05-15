@@ -26,13 +26,13 @@ public class User implements Serializable, UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "accountNonExpired")
+    @Column(name = "account_non_expired")
     private Boolean accountNonExpired;
 
-    @Column(name = "accountNonLocked")
+    @Column(name = "account_non_locked")
     private Boolean accountNonLocked;
 
-    @Column(name = "credentialsNonExpired")
+    @Column(name = "credentials_non_expired")
     private Boolean credentialsNonExpired;
 
     @Column(name = "enabled")
@@ -40,7 +40,7 @@ public class User implements Serializable, UserDetails {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "users_permissions",
+            name = "user_permission",
             joinColumns = @JoinColumn(
                     name = "id_user"),
             inverseJoinColumns = @JoinColumn(
