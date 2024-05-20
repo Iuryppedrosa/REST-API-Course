@@ -1,4 +1,4 @@
-package dev.iury.project.dataVO.security;
+package dev.iury.project.integrationtests.vo;
 
 import java.io.Serializable;
 import java.util.Objects;

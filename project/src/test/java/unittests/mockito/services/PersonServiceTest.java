@@ -1,4 +1,4 @@
-package unittests.mockito;
+package unittests.mockito.services;
 import dev.iury.project.Exceptions.RiqueredObjectsNullException;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.model.Person;
@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import unittests.mocks.MockPerson;
+import unittests.mapper.mocks.MockPerson;
 
 import java.util.List;
 import java.util.Optional;

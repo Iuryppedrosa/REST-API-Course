@@ -4,7 +4,7 @@ import dev.iury.project.mapper.DozerMapper;
 import dev.iury.project.model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import unittests.mocks.MockPerson;
+import unittests.mapper.mocks.MockPerson;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

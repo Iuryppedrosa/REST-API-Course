@@ -1,7 +1,7 @@
 package dev.iury.project.controllers;
 
 
-import dev.iury.project.dataVO.security.AccountCredentialVO;
+import dev.iury.project.dataVO.security.AccountCredentialsVO;
 import dev.iury.project.service.AuthServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,7 +22,7 @@ public class AuthController {
     @SuppressWarnings("rawtypes")
     @Operation(summary = "Authenticates a user and returns a token")
     @PostMapping(value = "/signin")
-    public ResponseEntity signin(@RequestBody AccountCredentialVO data) {
+    public ResponseEntity signin(@RequestBody AccountCredentialsVO data) {
         if (checkIfParamsIsNotNull(data))
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
         var token = authServices.signIn(data);
@@ -47,7 +47,7 @@ public class AuthController {
                 username == null || username.isBlank();
     }
 
-    private boolean checkIfParamsIsNotNull(AccountCredentialVO data) {
+    private boolean checkIfParamsIsNotNull(AccountCredentialsVO data) {
         return data == null || data.getUsername() == null || data.getUsername().isBlank()
                 || data.getPassword() == null || data.getPassword().isBlank();
     }

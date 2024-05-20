@@ -1,6 +1,6 @@
 package dev.iury.project.service;
 
-import dev.iury.project.dataVO.security.AccountCredentialVO;
+import dev.iury.project.dataVO.security.AccountCredentialsVO;
 import dev.iury.project.dataVO.security.TokenVO;
 import dev.iury.project.repository.UserRepository;
 import dev.iury.project.security.jwt.JwtTokenProvider;
@@ -24,7 +24,7 @@ public class AuthServices {
     private UserRepository repository;
 
     @SuppressWarnings("rawtypes")
-    public ResponseEntity signIn(AccountCredentialVO data){
+    public ResponseEntity signIn(AccountCredentialsVO data){
         try {
             var username = data.getUsername();
             var password = data.getPassword();

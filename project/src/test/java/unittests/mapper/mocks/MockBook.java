@@ -1,4 +1,4 @@
-package unittests.mocks;
+package unittests.mapper.mocks;
 
 import dev.iury.project.dataVO.BookVO;
 import dev.iury.project.model.Book;

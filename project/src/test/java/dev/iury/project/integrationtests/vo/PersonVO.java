@@ -1,31 +1,22 @@
 package dev.iury.project.integrationtests.vo;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dozermapper.core.Mapping;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
+@XmlRootElement
 public class PersonVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Mapping("id")
-    @JsonProperty("id")
     private Long id;
-
-    //@JsonProperty("first_Name")
     private String firstName;
-
-    //@JsonProperty("last_Name")
     private String lastName;
-
     private String address;
-
-    //@JsonIgnore
     private String gender;
 
-    public PersonVO() {
-
-    }
+    public PersonVO() {}
 
     public Long getId() {
         return id;
