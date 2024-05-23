@@ -10,6 +10,8 @@ import dev.iury.project.model.Person;
 import dev.iury.project.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -69,6 +71,20 @@ public class PersonServices {
         var savedEntity = personRepository.save(entity);
         var vo = DozerMapper.parseObject(savedEntity, PersonVO.class);
         vo.add(linkTo(methodOn(PersonController.class).findById(key)).withSelfRel());
+        return vo;
+    }
+
+    @Transactional
+    public PersonVO disablePerson(Long id) {
+
+        logger.info("Disabling one person!");
+
+        personRepository.disablePerson(id);
+
+        var entity = personRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID!"));
+        var vo = DozerMapper.parseObject(entity, PersonVO.class);
+        vo.add(linkTo(methodOn(PersonController.class).findById(id)).withSelfRel());
         return vo;
     }
 
