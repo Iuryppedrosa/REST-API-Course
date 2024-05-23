@@ -23,6 +23,17 @@ public class Person implements Serializable {
     @Column(name = "gender", nullable = false)
     private String gender;
 
+    @Column(nullable = false)
+    private Boolean enabled;
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public Person() {
     }
 

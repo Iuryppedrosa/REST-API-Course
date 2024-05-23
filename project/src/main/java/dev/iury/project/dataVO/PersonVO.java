@@ -2,6 +2,7 @@ package dev.iury.project.dataVO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.github.dozermapper.core.Mapping;
+import jakarta.persistence.Column;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.io.Serializable;
@@ -23,8 +24,18 @@ public class PersonVO extends RepresentationModel<PersonVO> implements Serializa
 
     private String address;
 
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     //@JsonIgnore
     private String gender;
+
+    private Boolean enabled;
 
     public PersonVO() {
 

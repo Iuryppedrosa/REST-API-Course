@@ -1,1 +1,25 @@
-spring.application.name=project
+cors:
+  originPatterns: http://localhost:3000,http://localhost:8080,http://localhost:4200,http://localhost:8888
+security:
+  jwt:
+    secret-key: 53cr37
+    expire-length: 3600000
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/course_restapi_udemy?useSSL=false&serverTimezone=UTC
+    username: root
+    password: nova_senha
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      show_sql: true
+      format_sql: true
+springdoc:
+  paths-to-match:
+  - /auth/**
+  - /api/**/v1/**
+  swagger-ui:
+    use-root-path: true
+
