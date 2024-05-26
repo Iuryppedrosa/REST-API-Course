@@ -22,4 +22,6 @@ springdoc:
   - /api/**/v1/**
   swagger-ui:
     use-root-path: true
+flyway:
+  repair: true
 

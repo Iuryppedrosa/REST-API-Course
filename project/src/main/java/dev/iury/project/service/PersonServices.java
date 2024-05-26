@@ -9,6 +9,8 @@ import dev.iury.project.mapper.custom.PersonMapper;
 import dev.iury.project.model.Person;
 import dev.iury.project.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,12 +30,15 @@ public class PersonServices {
     @Autowired
     PersonMapper personMapper;
 
-    public List<PersonVO> findAll(){
-        List<PersonVO> listAqui = DozerMapper.parseListObjects(personRepository.findAll(), PersonVO.class);
-        for(PersonVO person : listAqui){
-            person.add(linkTo(methodOn(PersonController.class).findById(person.getKey())).withSelfRel());
-        }
-        return listAqui;
+    public Page<PersonVO> findAll(Pageable pageable){
+        var personPage = personRepository.findAll(pageable);
+        var personVosPage = personPage.map(p -> DozerMapper.parseObject(p, PersonVO.class));
+
+        personVosPage.map(p ->
+                p.add(linkTo(methodOn(PersonController.class)
+                        .findById(p.getKey()))
+                        .withSelfRel()));
+        return personVosPage;
     }
 
     public PersonVO findById(Long key){

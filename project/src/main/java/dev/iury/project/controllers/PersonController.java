@@ -1,5 +1,4 @@
 package dev.iury.project.controllers;
-import java.util.List;
 import dev.iury.project.dataVO.PersonVO;
 import dev.iury.project.dataVO2.PersonVOV2;
 import dev.iury.project.service.PersonServices;
@@ -11,6 +10,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,8 +45,15 @@ public class PersonController {
                         @ApiResponse(responseCode = "500", description = "Internal Error", content = @Content)
                 }
     )
-    public List<PersonVO> findAll() {
-        return service.findAll();
+    public ResponseEntity<Page> findAll(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                                  @RequestParam(value = "size", defaultValue = "12") Integer size,
+                                                    @RequestParam(value = "direction", defaultValue = "asc") String direction) {
+
+        var sortDirection = "desc".equalsIgnoreCase(direction) ?
+                Sort.Direction.DESC : Sort.Direction.ASC;
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "firstName"));
+        return ResponseEntity.ok(service.findAll(pageable));
     }
 
     @CrossOrigin(origins = "http://localhost:8080")
