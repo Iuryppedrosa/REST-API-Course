@@ -1,5 +1,7 @@
 cors:
   originPatterns: http://localhost:3000,http://localhost:8080,http://localhost:4200,http://localhost:8888
+file:
+  upload-dir: /Users/iurypedrosa/Desktop/Mesa/Sistemas de Informação./Cursos/Back End/REST API/project
 security:
   jwt:
     secret-key: 53cr37
@@ -16,6 +18,12 @@ spring:
       ddl-auto: none
       show_sql: true
       format_sql: true
+servlet:
+  multipart:
+    enabled: true
+    file-size-threshold: 2KB
+    max-file-size: 200 MB
+    max-request-size: 215MB
 springdoc:
   paths-to-match:
   - /auth/**
